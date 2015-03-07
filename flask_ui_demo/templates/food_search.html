@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Food Search</title>
+    <link rel="stylesheet" href="static/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
+    <script src="static/bower_components/jquery/dist/jquery.js"></script>
+    <script src="static/bower_components/jquery-ui/jquery-ui.min.js"></script>
+  </head>
+  <body>
+
+    <p>
+      <label for="autocomplete">Select a programming language: </label>
+      <input id="autocomplete">
+    </p>
+
+    <script>
+      $(function(){
+        $("#autocomplete").autocomplete({
+            source: [ "c++", "java", "php", "coldfusion", "javascript", "asp", "ruby" ]
+        });
+      });
+    </script>
+  </body>
+</html>
