@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Food Search</title>
+  <link rel="stylesheet" href="static/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
+  <link rel="stylesheet" href="static/css/angucomplete.css">
+</head>
+<body ng-app="app">
+
+  <div ng-controller="MainController">
+    <h1>Data In My Kitchen</h1>
+
+    <div class="large-padded-row">
+      <div class="padded-row">
+        <angucomplete id="food_items" placeholder="Search food" pause="300" selectedobject="selectedFood" url="http://localhost:5000/food_types/search?q=" datafield="" titlefield="label" descriptionfield="food" minlength="3" inputclass="form-control form-control-small" matchclass="highlight"/>
+      </div>
+
+      <h3>My food items:</h3>
+      <div class="" ng-repeat="item in foodItems.data">
+        <p>
+          #{{item.foodItem.NDB_No}} - {{ item.foodItem.label}}
+        </p>
+      </div>
+    </div>
+
+    <script src="static/bower_components/angular/angular.min.js"></script>
+    <script src="static/bower_components/angular-touch/angular-touch.min.js"></script>
+    <script src="static/js/app/app.js"></script>
+    <script src="static/js/app/controllers/main-controller.js"></script>
+    <script src="static/js/app/directives/angucomplete.js"></script>
+  </body>
+  </html>
