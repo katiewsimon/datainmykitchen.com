@@ -12,14 +12,22 @@ def get_recommendation_for_foods():
     food_ids = map(int, food_ids)
     foods = mongo.db.food_data.find({"NDB_No": {'$in': food_ids}})
 
-    response = {}
+    response = []
 
     for food in foods:
        response[food.get('Shrt_Desc')] = 'ok'
 
     response['boom'] = 5
 
-    response_json = dumps({"example" : response})
+    #response = [
+    #        {
+    #            'nutrient': 'Fat',
+    #            'unique_id': 4124,
+    #            'quantity': 0.8
+    #        }
+    #]
+
+    response_json = dumps({"nutrients" : response})
     resp = Response(response_json, status=200, mimetype='application/json')
     return resp
 
