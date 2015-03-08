@@ -31,9 +31,10 @@ def get_recommendation_for_foods():
     resp = Response(response_json, status=200, mimetype='application/json')
     return resp
 
-@app.route('/search')
+@app.route('/')
 def food_search_view():
-    return render_template('food_search.html')
+    return app.send_static_file('index.html')
+    #return render_template('index.html')
 
 @app.route('/food_types/search')
 def get_all_food_types():
