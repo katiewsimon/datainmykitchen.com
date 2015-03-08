@@ -17,7 +17,25 @@
     <script>
       $(function(){
         $("#autocomplete").autocomplete({
-            source: [ "c++", "java", "php", "coldfusion", "javascript", "asp", "ruby" ]
+          source: function(request, response){
+            $.ajax({
+              url: "http://localhost:5000/food_types/all",
+              dataType: "json",
+              data: {
+                q: request.term
+              },
+              success: function( data ) {
+                console.log(data);
+                response(data);
+              }
+            });
+          },
+          minLength: 2,
+          select: function( event, ui ) {
+            console.log( ui.item ?
+              "Selected: " + ui.item.extra :
+              "Nothing selected, input was " + this.value);
+          }
         });
       });
     </script>

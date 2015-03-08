@@ -8,24 +8,25 @@ def food_search_view():
 
 @app.route("/food_types/all")
 def get_all_food_types():
-    js = json.dumps({"food_types": [
+    js = json.dumps([
         {
-            "name": "butter",
-            "id": 1
+            "label": "butter",
+            "value": "butter"
         },
         {
-            "name": "cheese",
-            "id": 2
+            "label": "cheese",
+            "value": "cheese"
         },
         {
-            "name": "bread",
-            "id": 3
+            "label": "bread",
+            "value": "bread"
         },
         {
-            "name": "clam chowder",
-            "id": 4
+            "label": "clam chowder",
+            "value": "clam chowder",
+            "extra": 1234
         }
-    ]})
+    ])
 
     resp = Response(js, status=200, mimetype='application/json')
     return resp
