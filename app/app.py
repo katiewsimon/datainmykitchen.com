@@ -1,35 +1,41 @@
-from flask import Flask, Response, render_template
-import json
-app = Flask(__name__)
+from flask import Flask, Response, render_template, request
+from flask.ext.pymongo import PyMongo
+from bson.json_util import dumps, loads
+import re
 
-@app.route("/search")
+app = Flask('datainmykitchen')
+mongo = PyMongo(app)
+
+@app.route('/search')
 def food_search_view():
-    return render_template("food_search.html")
+    return render_template('food_search.html')
 
-@app.route("/food_types/all")
+@app.route('/food_types/search')
 def get_all_food_types():
-    js = json.dumps([
-        {
-            "label": "butter",
-            "value": "butter"
-        },
-        {
-            "label": "cheese",
-            "value": "cheese"
-        },
-        {
-            "label": "bread",
-            "value": "bread"
-        },
-        {
-            "label": "clam chowder",
-            "value": "clam chowder",
-            "extra": 1234
-        }
-    ])
+  q = request.args.get('q')
+  print('q is')
+  print(q)
+  if q is None:
+    response_json = "{}"
+  else:
+    regx = re.compile(q, re.IGNORECASE)
+    results = mongo.db.food_data.find({"Shrt_Desc": regx})
+    results_json = loads(dumps(results))
 
-    resp = Response(js, status=200, mimetype='application/json')
-    return resp
+    print("results json")
+    print(results_json)
 
-if __name__ == "__main__":
+    if len(results_json) > 0:
+      foods = []
+      for result_json in results_json:
+        foods.append({'label': result_json.get('Shrt_Desc')})
+
+      response_json = dumps(foods)
+    else:
+      response_json = "{}"
+
+  resp = Response(response_json, status=200, mimetype='application/json')
+  return resp
+
+if __name__ == '__main__':
     app.run(debug=True)

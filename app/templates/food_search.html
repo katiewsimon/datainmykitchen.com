@@ -19,7 +19,7 @@
         $("#autocomplete").autocomplete({
           source: function(request, response){
             $.ajax({
-              url: "http://localhost:5000/food_types/all",
+              url: "http://localhost:5000/food_types/search",
               dataType: "json",
               data: {
                 q: request.term
