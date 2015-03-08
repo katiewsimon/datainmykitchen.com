@@ -12,10 +12,7 @@ def get_recommendation_for_foods():
     food_ids = map(int, food_ids)
     foods = mongo.db.food_data.find({"NDB_No": {'$in': food_ids}})
     nutrients = list(mongo.db.nutrients.find({}))
-    # print(nutrients)
-
-    response = []
-
+    
     # foods is the foods that the user inputs
     # loop through each food to grab the nutrient amount per nutrient category
     # sum the nutrient amount in each nutrient category for all the foods
@@ -44,38 +41,21 @@ def get_recommendation_for_foods():
 
     
     daily_values = {}
-    percent_daily_values = {}
+    percent_daily_values = []
     for nutrient in nutrients:
         name = nutrient.get('Nutrient')
         daily_value = nutrient.get('Daily Value')
 
         daily_values[name] = daily_value
 
-        percent_daily_values[name] = nutrients_running_totals.get(name) / daily_value
+        pdv = {}
+        pdv['name'] = name
+        pdv['value'] = nutrients_running_totals.get(name) / daily_value
+        percent_daily_values.append(pdv)
 
-    sorted_pdvs = sorted(percent_daily_values.items(), key=operator.itemgetter(1))
+    sorted_pdvs = sorted(percent_daily_values, key=lambda pdv: pdv['value'])
 
-    response.append(sorted_pdvs)
-    response.append(nutrients_running_totals)
-    response.append(percent_daily_values)
-    response.append(daily_values)
-
-
-
-
-    #response = [
-    #        {
-    #            'nutrient': 'Fat',
-    #            'unique_id': 4124,
-    #            'quantity': 0.8
-    #        }
-    #]
-    #     nutrients_consumed = {
-    # #     'fat': 0.6,
-    # #     'sodium': 0.8
-    # }
-
-    response_json = dumps({"nutrients" : response})
+    response_json = dumps({"nutrients" : sorted_pdvs})
     resp = Response(response_json, status=200, mimetype='application/json')
     return resp
 
