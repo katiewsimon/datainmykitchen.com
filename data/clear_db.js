@@ -1,0 +1,2 @@
+use datainmykitchen
+db.dropDatabase()

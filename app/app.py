@@ -12,7 +12,7 @@ def get_recommendation_for_foods():
     food_ids = map(int, food_ids)
     foods = mongo.db.food_data.find({"NDB_No": {'$in': food_ids}})
     nutrients = list(mongo.db.nutrients.find({}))
-    
+
     # foods is the foods that the user inputs
     # loop through each food to grab the nutrient amount per nutrient category
     # sum the nutrient amount in each nutrient category for all the foods
@@ -39,7 +39,7 @@ def get_recommendation_for_foods():
                 nutrient_consumed = nutrients_running_totals[nutrient_name]
                 nutrients_running_totals[nutrient_name] = nutrient_consumed + food_nutrient_val
 
-    
+
     daily_values = {}
     percent_daily_values = []
     for nutrient in nutrients:
@@ -71,9 +71,11 @@ def get_all_food_types():
     if q is None:
         response_json = "{}"
     else:
-        regx = re.compile(q, re.IGNORECASE)
-        results = mongo.db.food_data.find({"Shrt_Desc": regx})
-        results_json = loads(dumps(results))
+        #regx = re.compile(q, re.IGNORECASE)
+        #results = mongo.db.food_data.find({"Shrt_Desc": regx})
+        text_results = mongo.db.food_data.find({'$text': {'$search': q }})
+        print(text_results)
+        results_json = loads(dumps(text_results))
 
     if len(results_json) > 0:
         foods = []
