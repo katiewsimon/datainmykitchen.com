@@ -1,7 +1,7 @@
 from flask import Flask, Response, render_template, request
 from flask.ext.pymongo import PyMongo
 from bson.json_util import dumps, loads
-import re
+import re, operator
 
 app = Flask('datainmykitchen')
 mongo = PyMongo(app)
@@ -14,7 +14,6 @@ def get_recommendation_for_foods():
     nutrients = list(mongo.db.nutrients.find({}))
     # print(nutrients)
 
-
     response = []
 
     # foods is the foods that the user inputs
@@ -22,42 +21,45 @@ def get_recommendation_for_foods():
     # sum the nutrient amount in each nutrient category for all the foods
     # append the nutrient amounts to the response
 
-    nutrients_consumed = {
-    }
+    nutrients_running_totals = {}
+
     counter = 0
     for food in foods:
-        nutrient_amounts = {}
         food_id = food.get('NDB_No')
         food_name = food.get('Shrt_Desc')
-
-        # print(nutrients)
+        print(food_name)
 
         for nutrient in nutrients:
             nutrient_name = nutrient.get('Nutrient')
             food_nutrient_val = food.get(nutrient_name)
-            # print(food_name + " : " + nutrient.get('Nutrient') + ' => ' )
-            # print(food.get(nutrient_name))
-            # 'fat' : 'Fat_(mg)'
-            if not nutrient_name in nutrients_consumed:
-                nutrients_consumed[nutrient_name] = food.get(nutrient_name)
+
+            if not food_nutrient_val:
+                food_nutrient_val = 0.0
+
+            if not nutrient_name in nutrients_running_totals:
+                nutrients_running_totals[nutrient_name] = food_nutrient_val
             else:
-                nut_consumed = nutrients_consumed[nutrient_name]
-                food_nut_val = food.get(nutrient_name)
-                # print(food_nut_val)
-                # print(nut_consumed)
-                # print("consumed: ")
-                # print(int(nut_consumed))
-                if nut_consumed is float:
-                    print "nut_consumed is float"
-                # (nut_consumed is float or nut_consumed is int or nut_consumed is None) and (food_nut_val is float or food_nut_val is int or food_nut_val is None):
-                    # print(food_nut_val)
-                    # print(nut_consumed)
-                    nutrients_consumed[nutrient_name] = nut_consumed + food_nut_val
-                else:
-                    # print "not a float"
-                    counter = counter + 1
-        print(counter)
-        response.append(nutrient_amounts)
+                nutrient_consumed = nutrients_running_totals[nutrient_name]
+                nutrients_running_totals[nutrient_name] = nutrient_consumed + food_nutrient_val
+
+    
+    daily_values = {}
+    percent_daily_values = {}
+    for nutrient in nutrients:
+        name = nutrient.get('Nutrient')
+        daily_value = nutrient.get('Daily Value')
+
+        daily_values[name] = daily_value
+
+        percent_daily_values[name] = nutrients_running_totals.get(name) / daily_value
+
+    sorted_pdvs = sorted(percent_daily_values.items(), key=operator.itemgetter(1))
+
+    response.append(sorted_pdvs)
+    response.append(nutrients_running_totals)
+    response.append(percent_daily_values)
+    response.append(daily_values)
+
 
 
 
