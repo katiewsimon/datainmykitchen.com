@@ -1,31 +1,29 @@
 Nutrient,Unit of Measure,Daily Value
-Total fat,grams (g),65
+Lipid_Tot_(g),grams (g),65
 Saturated fatty acids,grams (g),20
-Cholesterol,milligrams (mg),300
-Sodium,milligrams (mg),"2,400"
-Potassium,milligrams (mg),"3,500"
-Total carbohydrate,grams (g),300
-Fiber,grams (g),25
-Protein,grams (g),50
-Vitamin A,International Unit (IU),"5,000"
-Vitamin C,milligrams (mg),60
-Calcium,milligrams (mg),"1,000"
-Iron,milligrams (mg),18
-Vitamin D,International Unit (IU),400
-Vitamin E,International Unit (IU),30
-Vitamin K,micrograms (mug),80
-Thiamin,milligrams (mg),1.5
-Riboflavin,milligrams (mg),1.7
-Niacin,milligrams (mg),20
-Vitamin B6,milligrams (mg),2
-Folate,micrograms (mug),400
-Vitamin B12,micrograms (mug),6
-Biotin,micrograms (mug),300
-Pantothenic acid,milligrams (mg),10
-Phosphorus,milligrams (mg),"1,000"
-Iodine,micrograms (mug),150
-Magnesium,milligrams (mg),400
-Zinc,milligrams (mg),15
-Selenium,micrograms (mug),70
-Copper,milligrams (mg),2
-Manganese,milligrams (mg),2
+Cholestrl_(mg),milligrams (mg),300
+Sodium_(mg),milligrams (mg),"2,400"
+Potassium_(mg),milligrams (mg),"3,500"
+Carbohydrt_(g),grams (g),300
+Fiber_TD_(g),grams (g),25
+Protein_(g),grams (g),50
+Vit_A_IU,International Unit (IU),"5,000"
+Vit_C_(mg),milligrams (mg),60
+Calcium_(mg),milligrams (mg),"1,000"
+Iron_(mg),milligrams (mg),18
+Vit_D_IU,International Unit (IU),400
+Vit_E_(mg),milligrams (mg),30
+Vit_K_(mug),micrograms (mug),80
+Thiamin_(mg),milligrams (mg),1.5
+Riboflavin_(mg),milligrams (mg),1.7
+Niacin_(mg),milligrams (mg),20
+Vit_B6_(mg),milligrams (mg),2
+Folate_Tot_(mug),micrograms (mug),400
+Vit_B12_(mug),micrograms (mug),6
+Panto_Acid_mg),milligrams (mg),10
+Phosphorus_(mg),milligrams (mg),"1,000"
+Magnesium_(mg),milligrams (mg),400
+Zinc_(mg),milligrams (mg),15
+Selenium_(mug),micrograms (mug),70
+Copper_mg),milligrams (mg),2
+Manganese_(mg),milligrams (mg),2
