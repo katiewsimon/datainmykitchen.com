@@ -1,28 +1,28 @@
 Nutrient,Unit of Measure,Daily Value
-Lipid_Tot_(g),grams (g),65
-Cholestrl_(mg),milligrams (mg),300
-Sodium_(mg),milligrams (mg),"2,400"
-Potassium_(mg),milligrams (mg),"3,500"
-Carbohydrt_(g),grams (g),300
-Fiber_TD_(g),grams (g),25
-Protein_(g),grams (g),50
-Vit_A_IU,International Unit (IU),"5,000"
-Vit_C_(mg),milligrams (mg),60
-Calcium_(mg),milligrams (mg),"1,000"
-Iron_(mg),milligrams (mg),18
-Vit_D_IU,International Unit (IU),400
-Vit_E_(mg),milligrams (mg),30
-Vit_K_(mug),micrograms (mug),80
-Thiamin_(mg),milligrams (mg),1.5
-Riboflavin_(mg),milligrams (mg),1.7
-Niacin_(mg),milligrams (mg),20
-Vit_B6_(mg),milligrams (mg),2
-Folate_Tot_(mug),micrograms (mug),400
-Vit_B12_(mug),micrograms (mug),6
-Panto_Acid_mg),milligrams (mg),10
-Phosphorus_(mg),milligrams (mg),"1,000"
-Magnesium_(mg),milligrams (mg),400
-Zinc_(mg),milligrams (mg),15
-Selenium_(mug),micrograms (mug),70
-Copper_mg),milligrams (mg),2
-Manganese_(mg),milligrams (mg),2
+Lipid_Tot_(g),grams (g),65.00
+Cholestrl_(mg),milligrams (mg),300.00
+Sodium_(mg),milligrams (mg),2400.00
+Potassium_(mg),milligrams (mg),3500.00
+Carbohydrt_(g),grams (g),300.00
+Fiber_TD_(g),grams (g),25.00
+Protein_(g),grams (g),50.00
+Vit_A_IU,International Unit (IU),5000.00
+Vit_C_(mg),milligrams (mg),60.00
+Calcium_(mg),milligrams (mg),1000.00
+Iron_(mg),milligrams (mg),18.00
+Vit_D_IU,International Unit (IU),400.00
+Vit_E_(mg),milligrams (mg),30.00
+Vit_K_(mug),micrograms (mug),80.00
+Thiamin_(mg),milligrams (mg),1.50
+Riboflavin_(mg),milligrams (mg),1.70
+Niacin_(mg),milligrams (mg),20.00
+Vit_B6_(mg),milligrams (mg),2.00
+Folate_Tot_(mug),micrograms (mug),400.00
+Vit_B12_(mug),micrograms (mug),6.00
+Panto_Acid_mg),milligrams (mg),10.00
+Phosphorus_(mg),milligrams (mg),1000.00
+Magnesium_(mg),milligrams (mg),400.00
+Zinc_(mg),milligrams (mg),15.00
+Selenium_(mug),micrograms (mug),70.00
+Copper_mg),milligrams (mg),2.00
+Manganese_(mg),milligrams (mg),2.00
